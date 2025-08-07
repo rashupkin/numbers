@@ -91,50 +91,51 @@ export default function App() {
   };
 
   return (
-    <div className="w-screen h-screen flex items-center justify-center px-4 bg-slate-200 dark:bg-neutral-900 transition-colors">
-      <div className="flex flex-col gap-50 w-full mx-auto max-w-5xl">
+    <div className="min-h-screen w-full flex items-center justify-center px-4 py-10 bg-slate-200 dark:bg-neutral-900 transition-colors">
+      <div className="w-full max-w-5xl flex flex-col gap-12">
         <BoxText text={displayedText} />
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 w-full gap-50">
-          <form onSubmit={handler} className="flex flex-col gap-12 w-full">
-            <div className="flex items-center gap-10">
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
-                className="w-full max-w-xs"
+
+        <div className="flex flex-col lg:flex-row gap-12 w-full">
+          <form
+            onSubmit={handler}
+            className="flex flex-col gap-6 w-full lg:w-2/3"
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              className="w-full"
+            >
+              <label
+                htmlFor="number"
+                className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-1"
               >
-                <label
-                  htmlFor="number"
-                  className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-1"
-                >
-                  Enter Number
-                </label>
-                <div className="relative">
-                  <input
-                    id="number"
-                    onChange={handleNumber}
-                    value={number}
-                    type="text"
-                    placeholder="e.g. 42"
-                    className="w-full rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
-                  />
-                </div>
-              </motion.div>
-              <AnimatedSelect>
-                <Select name="category">
-                  <option value="math">📐 Math</option>
-                  <option value="trivia">❓ Trivia</option>
-                  <option value="date">📅 Date</option>
-                </Select>
-              </AnimatedSelect>
-            </div>
+                Enter Number
+              </label>
+              <input
+                id="number"
+                onChange={handleNumber}
+                value={number}
+                type="text"
+                placeholder="e.g. 42"
+                className="w-full rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+              />
+            </motion.div>
+
+            <AnimatedSelect>
+              <Select name="category">
+                <option value="math">📐 Math</option>
+                <option value="trivia">❓ Trivia</option>
+                <option value="date">📅 Date</option>
+              </Select>
+            </AnimatedSelect>
 
             <ButtonForm>Get answer</ButtonForm>
           </form>
 
           <form
             onSubmit={handler}
-            className="w-full max-w-xs flex flex-col gap-12"
+            className="flex flex-col gap-6 w-full lg:w-1/3"
           >
             <AnimatedSelect>
               <Select name="random">
